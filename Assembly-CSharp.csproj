@@ -54,6 +54,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\PlayerCtrl.cs" />
+    <Compile Include="Assets\Scripts\PlayerGenerator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Download\JP Environmental Asset Pack\Shaders\DoubleSided.shader" />

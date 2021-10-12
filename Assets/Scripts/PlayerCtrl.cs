@@ -7,7 +7,7 @@ public class PlayerCtrl : MonoBehaviour
     GameObject targetArea;
     Rigidbody playerBody;
     public static bool isMovable = false, isSneaking = false;
-    float minSpeed = 1f, maxSpeed = 15f, minSneakTime = 3f, maxSneakTime = 5f;
+    float minSpeed = 1f, maxSpeed = 15f, minSneakTime = 2f, maxSneakTime = 7f;
     float speed = 2f, sneakRate, sneakTime, sneakMovingTime = 1.5f;
 
     void Start()
@@ -32,7 +32,6 @@ public class PlayerCtrl : MonoBehaviour
 
             if (sneakTime >= sneakRate)
             {
-                Debug.Log("Sneaking");
                 isSneaking = true;
                 transform.LookAt(targetArea.transform);
                 playerBody.velocity = transform.forward * speed;
