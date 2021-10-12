@@ -7,8 +7,8 @@ public class PlayerCtrl : MonoBehaviour
     GameObject targetArea;
     Rigidbody playerBody;
     public static bool isMovable = false, isSneaking = false;
-    float minSpeed = 1f, maxSpeed = 15f, minSneakTime = 2f, maxSneakTime = 7f;
-    float speed = 2f, sneakRate, sneakTime, sneakMovingTime = 1.5f;
+    float minSpeed = 1f, maxSpeed = 15f, minSneakTime = 4f, maxSneakTime = 7f;
+    float speed = 2f, sneakRate, sneakTime, sneakMovingTime = 0.3f;
 
     void Start()
     {
@@ -35,14 +35,32 @@ public class PlayerCtrl : MonoBehaviour
                 isSneaking = true;
                 transform.LookAt(targetArea.transform);
                 playerBody.velocity = transform.forward * speed;
-                sneakRate = Random.Range(minSneakTime, maxSneakTime);
             }
 
             if (sneakTime - sneakRate >= sneakMovingTime)
             {
-                sneakTime = 0f;
                 isSneaking = false;
+                sneakTime = 0f;
+                sneakRate = Random.Range(minSneakTime, maxSneakTime);
             }
+        }
+    }
+
+    public void normalState()
+    {
+        GetComponent<Renderer>().material.color = Color.green;
+    }
+
+    public void gazedState()
+    {
+        if (isSneaking)
+        {
+            GetComponent<Renderer>().material.color = Color.red;
+        }
+
+        else
+        {
+            GetComponent<Renderer>().material.color = Color.yellow;
         }
     }
 }
